@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اتصل بنا - المستقبل الواعد</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+    body{background:#f8f9fa;color:#2c3e50}
+    /* الهيدر (نفس تنسيق الموقع) */
+    header{background:linear-gradient(135deg,#2c3e50 0%,#34495e 50%,#2c3e50 100%);color:#fff;padding:15px 0;box-shadow:0 4px 12px rgba(0,0,0,.15);position:sticky;top:0;z-index:1000}
+    .header-container{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 20px}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo img{width:48px;height:48px;border-radius:8px;object-fit:cover;box-shadow:0 3px 6px rgba(0,0,0,.25)}
+    .logo h1{font-size:26px;font-weight:700;background:linear-gradient(to right,#ecf0f1,#bdc3c7);-webkit-background-clip:text;background-clip:text;color:transparent}
+    nav ul{display:flex;list-style:none;gap:25px}
+    nav a{color:#fff;text-decoration:none;font-weight:500;font-size:16px;padding:8px 12px;border-radius:4px;transition:.3s}
+    nav a:hover{background:rgba(255,255,255,.1);color:#ecf0f1}
+    .contact-link{background:rgba(52,152,219,.2);border:1px solid rgba(52,152,219,.35)}
+    .contact-link:hover{background:#3498db}
+    .header-actions{display:flex;align-items:center;gap:15px}
+    .auth-buttons{display:flex;gap:10px}
+    .login-btn,.register-btn{padding:8px 20px;border-radius:4px;font-weight:500;cursor:pointer;transition:.3s;border:none}
+    .login-btn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+    .login-btn:hover{background:rgba(255,255,255,.1)}
+    .register-btn{background:#3498db;color:#fff}
+    .register-btn:hover{background:#2980b9}
+    .mobile-menu-btn{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer}
+    @media (max-width:768px){
+      .header-container{flex-wrap:wrap}
+      nav{width:100%;order:3;margin-top:15px;display:none}
+      nav.active{display:block}
+      nav ul{flex-direction:column;gap:10px;align-items:center}
+      .mobile-menu-btn{display:block}
+      .auth-buttons{display:none}
+    }
+    /* بطل الصفحة */
+    .hero{background:linear-gradient(135deg,#2c3e50 0%,#3498db 100%);color:#fff;text-align:center;padding:70px 20px;margin-bottom:30px}
+    .hero h1{font-size:36px;margin-bottom:10px}
+    .hero p{opacity:.9}
+    /* المحتوى */
+    .container{max-width:1100px;margin:0 auto;padding:0 20px 60px}
+    .contact-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;margin-top:30px}
+    .card{background:#fff;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.06);padding:25px}
+    .card h2{font-size:22px;margin-bottom:18px;color:#2c3e50}
+    .field{margin-bottom:14px}
+    .field label{display:block;margin-bottom:8px;color:#2c3e50;font-weight:600}
+    .input,.textarea{width:100%;padding:12px 14px;border:1px solid #cfd6e0;border-radius:8px;font-size:15px;outline:none;transition:.25s}
+    .input:focus,.textarea:focus{border-color:#3498db;box-shadow:0 0 0 3px rgba(52,152,219,.15)}
+    .textarea{min-height:130px;resize:vertical}
+    .btn{display:inline-block;background:#3498db;color:#fff;padding:12px 22px;border-radius:28px;border:none;font-weight:700;cursor:pointer;transition:.25s}
+    .btn:hover{background:#2980b9;transform:translateY(-2px)}
+    .info-list{list-style:none;padding:0;margin:0}
+    .info-list li{margin-bottom:10px}
+    .info-list strong{color:#3498db}
+    .map{width:100%;height:260px;border:none;border-radius:10px;margin-top:12px}
+    .note{font-size:13px;color:#6b7a90;margin-top:10px}
+    @media (max-width:900px){.contact-wrap{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <!-- الهيدر -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="media/logo.jpg" alt="شعار المستقبل الواعد"></a>
+        <h1>المستقبل الواعد</h1>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="فتح/إغلاق القائمة">☰</button>
+
+      <nav id="main-nav">
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="#">الصكوك</a></li>
+          <li><a href="#">الأسهم</a></li>
+          <li><a href="#">العملات الرقمية</a></li>
+          <li><a href="#">منصات التداول</a></li>
+          <li><a href="#">المدونة</a></li>
+          <li><a href="contact.html" class="contact-link">اتصل بنا</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="auth-buttons">
+          <button class="login-btn">تسجيل الدخول</button>
+          <button class="register-btn">حساب جديد</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- بطل الصفحة -->
+  <section class="hero">
+    <h1>اتصل بنا</h1>
+    <p>يسعدنا تواصلك — فريقنا جاهز لخدمتك والإجابة على جميع الاستفسارات.</p>
+  </section>
+
+  <!-- المحتوى -->
+  <main class="container">
+    <div class="contact-wrap">
+      <!-- نموذج المراسلة -->
+      <div class="card">
+        <h2>أرسل رسالة</h2>
+        <form id="contactForm" novalidate>
+          <div class="field">
+            <label for="name">الاسم الكامل</label>
+            <input id="name" name="name" class="input" type="text" placeholder="مثال: محمد الخيران" required minlength="3" maxlength="80" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">البريد الإلكتروني</label>
+            <input id="email" name="email" class="input" type="email" placeholder="you@example.com" required inputmode="email" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="subject">الموضوع</label>
+            <input id="subject" name="subject" class="input" type="text" placeholder="موضوع رسالتك" maxlength="120">
+          </div>
+          <div class="field">
+            <label for="message">نص الرسالة</label>
+            <textarea id="message" name="message" class="textarea" placeholder="اكتب رسالتك هنا..." required minlength="10" maxlength="2000"></textarea>
+          </div>
+          <button type="submit" class="btn">إرسال الرسالة</button>
+          <p class="note">لن نشارك بياناتك مع أي طرف ثالث. يُفضّل استخدام اتصال آمن <strong>HTTPS</strong> عند النشر.</p>
+        </form>
+      </div>
+
+      <!-- معلومات التواصل -->
+      <div class="card">
+        <h2>معلومات التواصل</h2>
+        <ul class="info-list">
+          <li><strong>📞 الهاتف:</strong> +966 555 555 555</li>
+          <li><strong>📧 البريد:</strong> info@futureinvest.com</li>
+          <li><strong>📍 العنوان:</strong> الرياض - المملكة العربية السعودية</li>
+          <li><strong>💬 واتساب:</strong> <a href="https://wa.me/966555555555" rel="noopener">تواصل سريع</a></li>
+        </ul>
+        <iframe class="map" src="https://www.google.com/maps?q=Riyadh,+Saudi+Arabia&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // القائمة المتنقلة
+    (function () {
+      const btn = document.querySelector('.mobile-menu-btn');
+      const nav = document.getElementById('main-nav');
+      if (btn && nav) {
+        btn.addEventListener('click', () => nav.classList.toggle('active'));
+      }
+    })();
+
+    // تحقق مبسّط للنموذج + رسالة نجاح (يمكن ربطه لاحقًا بباك-إند)
+    (function () {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // تحقق أساسي من الحقول
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        if (name.length < 3 || message.length < 10 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert('فضلاً تأكد من إدخال البيانات بالشكل الصحيح.');
+          return;
+        }
+
+        // TODO: إرسال عبر Fetch إلى API آمن (HTTPS) + حماية CSRF/JWT
+        alert('تم إرسال رسالتك بنجاح! سنعاود التواصل معك قريبًا.');
+        form.reset();
+      });
+    })();
+  </script>
+</body>
+</html>

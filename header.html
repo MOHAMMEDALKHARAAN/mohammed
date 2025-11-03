@@ -1,0 +1,156 @@
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <a href="index.html" aria-label="العودة للصفحة الرئيسية">
+        <img src="media/logo.jpg" alt="شعار المستقبل الواعد">
+      </a>
+      <h1>المستقبل الواعد</h1>
+    </div>
+
+    <!-- زر البرجر للجوال -->
+    <button class="mobile-menu-btn" id="burgerBtn" aria-label="فتح القائمة" aria-controls="main-nav" aria-expanded="false">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+
+    <!-- قائمة سطح المكتب (وتتحول درج جانبي في الجوال) -->
+    <nav id="main-nav" aria-hidden="false">
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="#">الصكوك</a></li>
+        <li><a href="#">الأسهم</a></li>
+        <li><a href="#">العملات الرقمية</a></li>
+        <li><a href="#">منصات التداول</a></li>
+        <li><a href="#">المدونة</a></li>
+        <li><a href="contact.html" class="contact-link">اتصل بنا</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="auth-buttons">
+        <button class="login-btn">تسجيل الدخول</button>
+        <button class="register-btn">حساب جديد</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- طبقة التعتيم للجوال -->
+<div class="backdrop" id="backdrop" hidden></div>
+
+<script>
+  // تهيئة آمنة (تعمل مرة واحدة) — مفيدة إذا تم تحميل الهيدر ديناميكيًا
+  (function initC7Header(){
+    if (window.__C7HeaderInited__) return;
+    window.__C7HeaderInited__ = true;
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const nav = document.getElementById('main-nav');
+    const backdrop = document.getElementById('backdrop');
+
+    function toggleMobileMenu(forceState) {
+      const willOpen = typeof forceState === 'boolean' ? forceState : !nav.classList.contains('active');
+      nav.classList.toggle('active', willOpen);
+      backdrop.hidden = !willOpen;
+      burgerBtn.setAttribute('aria-expanded', String(willOpen));
+      nav.setAttribute('aria-hidden', String(!willOpen));
+      document.body.style.overflow = willOpen ? 'hidden' : '';
+      burgerBtn.classList.toggle('is-open', willOpen);
+
+      // نقل التركيز لأول رابط داخل القائمة عند الفتح لتحسين الوصولية
+      if (willOpen) {
+        const firstLink = nav.querySelector('a');
+        firstLink && firstLink.focus({ preventScroll: true });
+      }
+    }
+
+    // أحداث
+    burgerBtn && burgerBtn.addEventListener('click', () => toggleMobileMenu());
+    backdrop && backdrop.addEventListener('click', () => toggleMobileMenu(false));
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('active')) toggleMobileMenu(false);
+    });
+
+    // أمثلة لأزرار الدخول/التسجيل
+    const login = document.querySelector('.login-btn');
+    const register = document.querySelector('.register-btn');
+    login && login.addEventListener('click', () => alert('نافذة تسجيل الدخول ستظهر هنا'));
+    register && register.addEventListener('click', () => alert('نافذة إنشاء حساب جديد ستظهر هنا'));
+  })();
+</script>
+
+<style>
+  /* الأساسيات */
+  header{
+    background:linear-gradient(135deg,#2c3e50 0%,#34495e 50%,#2c3e50 100%);
+    color:#fff;padding:15px 0;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+    position:sticky;top:0;z-index:1000
+  }
+  .header-container{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 20px}
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo img{width:48px;height:48px;border-radius:8px;object-fit:cover;box-shadow:0 3px 6px rgba(0,0,0,.25)}
+  .logo h1{font-size:26px;font-weight:700;background:linear-gradient(to right,#ecf0f1,#bdc3c7);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* قائمة سطح المكتب */
+  nav ul{display:flex;list-style:none;gap:25px}
+  nav a{color:#fff;text-decoration:none;font-weight:500;font-size:16px;padding:8px 12px;border-radius:4px;transition:.3s}
+  nav a:hover{background-color:rgba(255,255,255,.1);color:#ecf0f1}
+  .contact-link{background:rgba(52,152,219,.2);border:1px solid rgba(52,152,219,.35)}
+  .contact-link:hover{background:#3498db}
+
+  .header-actions{display:flex;align-items:center;gap:15px}
+  .auth-buttons{display:flex;gap:10px}
+  .login-btn,.register-btn{padding:8px 20px;border-radius:4px;font-weight:500;cursor:pointer;transition:.3s;border:none}
+  .login-btn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+  .login-btn:hover{background:rgba(255,255,255,.1)}
+  .register-btn{background:#3498db;color:#fff}
+  .register-btn:hover{background:#2980b9}
+
+  /* زر البرجر */
+  .mobile-menu-btn{
+    display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;
+    width:44px;height:36px;position:relative
+  }
+  .mobile-menu-btn:focus{outline:2px solid rgba(52,152,219,.7);outline-offset:2px}
+  .burger-line{
+    position:absolute;right:8px;left:8px;height:2px;background:#fff;border-radius:2px;transition:.25s
+  }
+  .burger-line:nth-child(1){top:9px}
+  .burger-line:nth-child(2){top:17px}
+  .burger-line:nth-child(3){top:25px}
+  /* شكل X عند الفتح */
+  .mobile-menu-btn.is-open .burger-line:nth-child(1){transform:translateY(8px) rotate(-45deg)}
+  .mobile-menu-btn.is-open .burger-line:nth-child(2){opacity:0}
+  .mobile-menu-btn.is-open .burger-line:nth-child(3){transform:translateY(-8px) rotate(45deg)}
+
+  /* طبقة التعتيم للجوال */
+  .backdrop{
+    position:fixed;inset:0;background:rgba(0,0,0,.35);
+    backdrop-filter:saturate(110%) blur(1px);
+    z-index:999; /* أقل من nav (1001) لكن فوق المحتوى */
+  }
+
+  /* الجوال: درج جانبي RTL */
+  @media (max-width:768px){
+    .mobile-menu-btn{display:block}
+    .auth-buttons{display:none}
+
+    #main-nav{
+      position:fixed;top:0;right:0;height:100vh;width:min(82vw,320px);
+      background:linear-gradient(135deg,#2c3e50 0%,#34495e 100%);
+      box-shadow:-12px 0 30px rgba(0,0,0,.25);
+      padding:80px 20px 24px; /* مساحة أعلى لهذا التصميم */
+      transform:translateX(100%);transition:transform .28s ease;
+      z-index:1001;
+    }
+    #main-nav.active{transform:translateX(0)}
+    #main-nav ul{flex-direction:column;gap:12px;align-items:stretch}
+    #main-nav a{display:block;padding:12px 14px;border-radius:8px;background:rgba(255,255,255,.06)}
+
+    /* نضمن بقاء تخطيط سطح المكتب كما هو */
+    nav{order:3;margin-top:0}
+    .header-container{flex-wrap:nowrap}
+  }
+</style>
