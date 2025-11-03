@@ -6,52 +6,206 @@
     <title>المستقبل الواعد - الاستثمار الإلكتروني</title>
     <style>
         /* تنسيقات عامة */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-        body { background-color: #f8f9fa; color: #333; min-height: 100vh; display: flex; flex-direction: column; }
-        main { flex: 1; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
         /* قسم الهيرو مع الفيديو */
-        .hero { position: relative; height: 90vh; overflow: hidden; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-        .hero video { position: absolute; top: 0; right: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-        .hero::after { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(44,62,80,0.85) 0%, rgba(52,73,94,0.85) 100%); z-index: -1; }
-        .hero-content { max-width: 800px; padding: 20px; animation: fadeInUp 1.5s ease; }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; background: linear-gradient(to right, #ffffff, #a3c9ff);
-            -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .hero p { font-size: 18px; line-height: 1.6; margin-bottom: 30px; color: #e0e0e0; }
-        .cta-button { display: inline-block; background: #3498db; color: white; padding: 12px 35px; border-radius: 30px;
-            text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4); }
-        .cta-button:hover { background: #2980b9; transform: translateY(-3px); }
-        @keyframes fadeInUp { from {opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0);} }
+        .hero {
+            position: relative;
+            height: 90vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(44,62,80,0.85) 0%, rgba(52,73,94,0.85) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #a3c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {opacity: 0; transform: translateY(30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
 
         /* قسم الخدمات */
-        .section-title { text-align: center; margin: 60px 0 30px; position: relative; }
-        .section-title h2 { font-size: 32px; color: #2c3e50; display: inline-block; padding-bottom: 10px; }
-        .section-title h2::after { content: ''; position: absolute; bottom: 0; right: 50%; transform: translateX(50%);
-            width: 80px; height: 3px; background: linear-gradient(to right, #2c3e50, #3498db); }
-        .investment-services { margin: 50px 0; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
-        .service-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s; text-align: center; padding: 30px 20px; }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); }
-        .service-icon { font-size: 50px; margin-bottom: 20px; color: #2c3e50; }
-        .service-card h3 { font-size: 22px; margin-bottom: 15px; color: #2c3e50; }
-        .service-card p { color: #666; line-height: 1.6; margin-bottom: 20px; }
-        .service-link { color: #3498db; text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        .service-link:hover { color: #2980b9; }
+        .section-title {
+            text-align: center;
+            margin: 60px 0 30px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #2c3e50;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #2c3e50, #3498db);
+        }
+
+        .investment-services {
+            margin: 50px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .service-link:hover {
+            color: #2980b9;
+        }
 
         /* تصميم متجاوب */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            .hero p { font-size: 16px; }
-            .cta-button { font-size: 14px; padding: 10px 25px; }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .cta-button {
+                font-size: 14px;
+                padding: 10px 25px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- الهيدر والفوتر سيُحمّلان ديناميكيًا -->
+    <!-- تضمين الهيدر -->
     <div id="header-placeholder"></div>
 
     <main>
@@ -99,62 +253,21 @@
         </section>
     </main>
 
+    <!-- تضمين الفوتر -->
     <div id="footer-placeholder"></div>
 
     <script>
-        /**
-         * تحميل ملف HTML وإدراجه، ثم تنفيذ وسوم <script> الموجودة بداخله.
-         * - يدعم <script src="..."> و <script> النصي.
-         * - يحافظ على سمات السكربت (type, async, defer...).
-         */
-        async function loadHtmlWithScripts(targetId, url) {
-            const container = document.getElementById(targetId);
-            if (!container) return;
-
-            const res = await fetch(url, { cache: 'no-store' });
-            if (!res.ok) throw new Error('فشل تحميل: ' + url);
-
-            const html = await res.text();
-            // أدخل الـ HTML
-            container.innerHTML = html;
-
-            // نفّذ السكربتات داخل الحاوية
-            const scripts = Array.from(container.querySelectorAll('script'));
-            for (const oldScript of scripts) {
-                const newScript = document.createElement('script');
-
-                // انسخ السمات
-                for (const { name, value } of Array.from(oldScript.attributes)) {
-                    newScript.setAttribute(name, value);
-                }
-
-                if (oldScript.src) {
-                    // لو كان خارجيًا، أعِد تحميله ليتنفّذ
-                    newScript.src = oldScript.src;
-                } else {
-                    // سكربت نصّي
-                    newScript.textContent = oldScript.textContent;
-                }
-
-                oldScript.parentNode.replaceChild(newScript, oldScript);
-            }
+        // تحميل ملفات الهيدر والفوتر
+        function loadExternalFile(elementId, filePath) {
+            fetch(filePath)
+                .then(response => response.ok ? response.text() : Promise.reject('خطأ بالتحميل'))
+                .then(data => document.getElementById(elementId).innerHTML = data)
+                .catch(err => console.error('Error:', err));
         }
 
-        // تحميل الهيدر والفوتر (وتنفيذ سكربتاتهما)
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                await loadHtmlWithScripts('header-placeholder', 'header.html');
-            } catch (e) {
-                console.error(e);
-                document.getElementById('header-placeholder').innerHTML = '<p style="padding:10px;color:#c00">تعذّر تحميل الهيدر</p>';
-            }
-
-            try {
-                await loadHtmlWithScripts('footer-placeholder', 'footer.html');
-            } catch (e) {
-                console.error(e);
-                document.getElementById('footer-placeholder').innerHTML = '<p style="padding:10px;color:#c00">تعذّر تحميل الفوتر</p>';
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+            loadExternalFile('header-placeholder', 'header.html');
+            loadExternalFile('footer-placeholder', 'footer.html');
         });
     </script>
 </body>
